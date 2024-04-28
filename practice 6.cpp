@@ -8,14 +8,14 @@ class Student {
 public:
     string name;
     string group;
-    vector<string> lessons; // Добавляем член lessons
+    vector<string> lessons; 
     int done_works;
     int fail_works;
 
     Student(string name, string group, vector<string> lessons, int done_works, int fail_works) :
         name(name),
         group(group),
-        lessons(lessons), // Инициализируем член lessons
+        lessons(lessons), 
         done_works(done_works),
         fail_works(fail_works) {}
 };
