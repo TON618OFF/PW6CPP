@@ -46,7 +46,38 @@ public:
     vector<Student> students;
     vector<Teacher> teachers;
 
+
+
     void add_student_to_group(Student student, string group) {
+
+        bool student_found = false;
+        for (Student& student_in_list : students) {
+            if (student_in_list.name == student.name) {
+                student_found = true;
+                break;
+            }
+        }
+
+        bool group_found = false;
+        for (Student& student_in_group : students) {
+            if (student_in_group.group == group) {
+                group_found = true;
+                break;
+            }
+        }
+
+        if (student_found && group_found) {
+            for (Student& student_in_group : students) {
+                if (student_in_group.group == group) {
+                    student_in_group = student;
+                    return;
+                }
+            }
+        }
+        else {
+            cout << "Ошибка: студент или группа не найдены" << endl;
+        }
+
         for (Student& student_in_group : students) {
             if (student_in_group.group == group) {
                 student_in_group = student;
@@ -57,6 +88,22 @@ public:
     }
 
     void add_lesson_to_teacher(Teacher teacher, string lesson) {
+
+        bool teacher_found = false;
+        for (Teacher& teacher_in_list : teachers) {
+            if (teacher_in_list.name == teacher.name) {
+                teacher_found = true;
+                break;
+            }
+        }
+
+        if (teacher_found) {
+            teacher.lessons.push_back(lesson);
+        }
+        else {
+            cout << "Ошибка: преподаватель не найден" << endl;
+        }
+
         for (Teacher& teacher_in_list : teachers) {
             if (teacher_in_list.name == teacher.name) {
                 teacher_in_list.add_lesson_to_teacher(lesson);
@@ -66,6 +113,22 @@ public:
     }
 
     void add_group_to_teacher(Teacher teacher, string group) {
+
+        bool teacher_found = false;
+        for (Teacher& teacher_in_list : teachers) {
+            if (teacher_in_list.name == teacher.name) {
+                teacher_found = true;
+                break;
+            }
+        }
+
+        if (teacher_found) {
+            teacher.groups.push_back(group);
+        }
+        else {
+            cout << "Ошибка: преподаватель не найден" << endl;
+        }
+
         for (Teacher& teacher_in_list : teachers) {
             if (teacher_in_list.name == teacher.name) {
                 teacher_in_list.add_group_to_teacher(group);
@@ -85,6 +148,16 @@ int main() {
 
     Student student1("Иванов Иван", "П50-4-22", { "ОАиП", "ОСиС" }, 10, 2);
     Student student2("Сидоров Сидр", "П50-5-22", { "C++", "HTML" }, 8, 1);
+
+    if (student1.done_works < 0 || student1.fail_works < 0) {
+        cout << "Неверные значения! Перепроверьте данные студента!";
+        return -1;
+    }
+
+    if (student2.done_works < 0 || student2.fail_works < 0) {
+        cout << "Неверные значения! Перепроверьте данные студента!";
+        return -1;
+    }
 
     college.add_student_to_group(student1, "П50-6-22");
     college.add_student_to_group(student2, "П50-1-22");
