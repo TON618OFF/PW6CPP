@@ -96,13 +96,6 @@ public:
             }
         }
 
-        if (teacher_found) {
-            teacher.lessons.push_back(lesson);
-        }
-        else {
-            cout << "Ошибка: преподаватель не найден" << endl;
-        }
-
         for (Teacher& teacher_in_list : teachers) {
             if (teacher_in_list.name == teacher.name) {
                 teacher_in_list.add_lesson_to_teacher(lesson);
@@ -147,15 +140,6 @@ public:
             return;
         }
 
-        if (num_present == 0) {
-            cout << "На паре нет студентов" << endl;
-        }
-        else if (num_present == 1) {
-            cout << "На паре присутствует 1 студент" << endl;
-        }
-        else {
-            cout << "На паре присутствует " << num_present << " студентов из " << num_total << endl;
-        }
     }
 
     void remove_student_from_group(Student student, string group) {
@@ -191,11 +175,6 @@ int main() {
     Student student2("Сидоров Сидр", "П50-5-22", { "C++", "HTML" }, 8, 1);
 
     if (student1.done_works < 0 || student1.fail_works < 0) {
-        cout << "Неверные значения! Перепроверьте данные студента!";
-        return -1;
-    }
-
-    if (student2.done_works < 0 || student2.fail_works < 0) {
         cout << "Неверные значения! Перепроверьте данные студента!";
         return -1;
     }
