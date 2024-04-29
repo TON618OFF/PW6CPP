@@ -4,6 +4,12 @@
 
 using namespace std;
 
+/*
+Слава делает класс Студента и класс МПТ
+Мотя продумывает всю валидацию, создаёт класс Преподавателя
+*/
+
+
 class Student {
 public:
     string name;
@@ -21,24 +27,8 @@ public:
 };
 
 
-class Teacher {
-public:
-    string name;
-    vector<string> groups;
-    vector<string> lessons;
+class Teacher { 
 
-    Teacher(string name, vector<string> groups, vector<string> lessons) :
-        name(name),
-        groups(groups),
-        lessons(lessons) {}
-
-    void add_lesson_to_teacher(string lesson) {
-        lessons.push_back(lesson);
-    }
-
-    void add_group_to_teacher(string group) {
-        groups.push_back(group);
-    }
 };
 
 
